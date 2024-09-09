@@ -10,10 +10,10 @@
       <div>
         Your tenant URL:
         <a
-          href="http://{{ $domain }}.localhost.com"
+          href="http://{{ $domain }}.localhost"
           class="text-sm underline"
           target="_blank"
-          >http://{{ $domain }}.localhost.com</a
+          >http://{{ $domain }}.localhost</a
         >
       </div>
     </div>
