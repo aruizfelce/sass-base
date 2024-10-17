@@ -7,6 +7,7 @@ use App\Http\Controllers\Tenant\OnboardingController;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyBySubdomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,14 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', function () {
-        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+        $domain = tenant('domains')[0]->domain;
+        return view('tenant.welcome', compact('domain'));
     });
     Route::get('/onboarding', [OnboardingController::class, 'show'])->name('tenant.onboarding');
     Route::post('/onboarding', [OnboardingController::class, 'store'])->name('tenant.onboarding.store');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('tenant.dashboard');
+
+    Auth::routes([
+        'register' => false, // Desactiva la ruta de registro
+    ]);
 });

@@ -9,12 +9,9 @@
     <div class="mt-4 d-flex items-center justify-between">
       <div>
         Your tenant URL:
-        <a
-          href="http://{{ $domain }}.localhost"
-          class="text-sm underline"
-          target="_blank"
-          >http://{{ $domain }}.localhost</a
-        >
+        <a href="{{ $domain }}" class="text-sm underline" target="_blank">
+          {{ $domain }}
+        </a>
       </div>
     </div>
   </div>

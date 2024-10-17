@@ -12,9 +12,9 @@ class OnboardingController extends Controller
 {
     public function show()
     {
-        if (User::count() > 0) {
+        /*if (User::count() > 0) {
             return redirect()->route('tenant.dashboard');
-        }
+        }*/
 
         return view('tenant.onboarding');
     }

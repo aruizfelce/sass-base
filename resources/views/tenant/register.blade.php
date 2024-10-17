@@ -15,7 +15,7 @@
             :value="old('domain')"
             required
           />
-          <span class="text-gray-600 ml-2 mt-1">.localhost</span>
+          <span class="text-gray-600 ml-2 mt-1">.{{ config('tenancy.central_domain') }}</span>
         </div>
       </div>
   

@@ -103,6 +103,10 @@ class TenancyServiceProvider extends ServiceProvider
         $this->mapRoutes();
 
         $this->makeTenancyMiddlewareHighestPriority();
+
+        Middleware\InitializeTenancyBySubdomain::$onFail = function ($exception, $request, $next) {
+            return redirect(env('APP_URL') . '/register');
+        };
     }
 
     protected function bootEvents()

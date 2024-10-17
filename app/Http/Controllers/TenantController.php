@@ -24,6 +24,14 @@ class TenantController extends Controller
 
     public function registered($domain)
     {
+        $appUrl = config('app.url');
+        
+        // Analizar el esquema y el dominio base de APP_URL
+        $parsedUrl = parse_url($appUrl);
+
+        // Construir la nueva URL
+        $domain = $parsedUrl['scheme'] . '://' . $domain . '.' . $parsedUrl['host'];
+
         return view('tenant.registered', compact('domain'));
     }
 }
